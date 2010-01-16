@@ -38,6 +38,10 @@ module Bundler
   $LOAD_PATH.unshift File.expand_path("#{dir}/gems/rake-0.8.7/lib")
   $LOAD_PATH.unshift File.expand_path("#{dir}/../../../rails/railties/bin")
   $LOAD_PATH.unshift File.expand_path("#{dir}/../../../rails/railties/lib")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/ruby-openid-2.1.7/bin")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/gems/ruby-openid-2.1.7/lib")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/dirs/rack-openid/bin")
+  $LOAD_PATH.unshift File.expand_path("#{dir}/dirs/rack-openid/lib")
   $LOAD_PATH.unshift File.expand_path("#{dir}/../../../rails/activerecord/bin")
   $LOAD_PATH.unshift File.expand_path("#{dir}/../../../rails/activerecord/lib")
   $LOAD_PATH.unshift File.expand_path("#{dir}/../../../rails/activeresource/bin")
@@ -82,6 +86,10 @@ module Bundler
   @bundled_specs["rake"].loaded_from = "#{dir}/specifications/rake-0.8.7.gemspec"
   @bundled_specs["railties"] = eval(File.read("#{dir}/specifications/railties-3.0.pre.gemspec"))
   @bundled_specs["railties"].loaded_from = "#{dir}/specifications/railties-3.0.pre.gemspec"
+  @bundled_specs["ruby-openid"] = eval(File.read("#{dir}/specifications/ruby-openid-2.1.7.gemspec"))
+  @bundled_specs["ruby-openid"].loaded_from = "#{dir}/specifications/ruby-openid-2.1.7.gemspec"
+  @bundled_specs["rack-openid"] = eval(File.read("#{dir}/specifications/rack-openid-0.2.1.gemspec"))
+  @bundled_specs["rack-openid"].loaded_from = "#{dir}/specifications/rack-openid-0.2.1.gemspec"
   @bundled_specs["activerecord"] = eval(File.read("#{dir}/specifications/activerecord-3.0.pre.gemspec"))
   @bundled_specs["activerecord"].loaded_from = "#{dir}/specifications/activerecord-3.0.pre.gemspec"
   @bundled_specs["activeresource"] = eval(File.read("#{dir}/specifications/activeresource-3.0.pre.gemspec"))

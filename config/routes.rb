@@ -1,5 +1,7 @@
 Knowyou::Application.routes.draw do |map|
   resources :users
+  match 'identities' => 'identities#create', :requirements => { :method => :get }
+  resources :identities
   resource :user_session
   root :to => "home#index"
   # The priority is based upon order of creation:

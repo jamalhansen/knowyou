@@ -1,0 +1,49 @@
+class IdentitiesController < ApplicationController
+  include OpenIdAuthentication
+  before_filter :require_user
+
+  def new
+    @identity = Identity.new
+  end
+
+  def create
+    openid_identifier = OpenID.normalize_url(params[:identity][:name])
+
+    @identity = Identity.new :name  => openid_identifier
+
+    if @identity.valid?
+      #using_open_id? openid_identifier
+      params[:openid_identifier] = openid_identifier
+      authenticate_open_id
+    else
+      render_action :new
+    end
+  end
+
+  def authenticate_open_id 
+    authenticate_with_open_id do |result, identity_url|
+      if result.successful?
+        identity = Identity.new :name => identity_url
+        user = User.find 3
+        user.identities << identity
+        user.save
+        #current_user.identities << identity
+	#current_user.save
+        successful_login
+      else
+        failed_login result.message
+      end
+    end
+  end
+
+  private
+    def successful_login
+      flash[:message] = "Open Id Authenticated"
+      redirect_to root
+    end
+
+    def failed_login(message)
+      flash[:error] = message
+      redirect_to root
+    end
+end

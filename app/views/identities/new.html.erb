@@ -1,0 +1,7 @@
+<h1>Open Id</h1>
+ 
+<% form_for @identity do |f| %>
+   <%= f.error_messages %>
+   <input id="openid_identifier" name="openid_identifier" size="30" type="text" />
+   <%= f.submit "Verify"  %>
+<% end %>
