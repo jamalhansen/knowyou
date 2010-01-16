@@ -1,0 +1,8 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+bob:
+  name: http://bob@example.com
+
+sally:
+  name: http://sally123@my.open.id.provider.example.com
+
